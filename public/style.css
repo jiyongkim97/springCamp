@@ -1,0 +1,47 @@
+body{
+  background: linear-gradient( #F8E0F7 ,#FBEFFB ) ;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.Auth{
+  display: none;
+}
+
+.AuthOn{
+  display: block;
+}
+
+.sideTree{
+  width: 20%;
+  max-width: 300px;
+}
+
+.main_topic{
+  text-align: center;
+}
+
+.mainTree{
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.login{
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.btn_open{
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+}
+.btn_open button {
+  border-radius: 40px;
+  border: 1px pink solid;
+  color: #F5A9F2;
+}
