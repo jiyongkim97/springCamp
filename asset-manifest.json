@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/springCamp/static/js/main.e281db0f.js",
+    "static/media/sideTree.png": "/springCamp/static/media/sideTree.005751c0404fc9dbec00.png",
+    "static/media/tree.png": "/springCamp/static/media/tree.7a870cac0301d57a4a1d.png",
+    "index.html": "/springCamp/index.html",
+    "main.e281db0f.js.map": "/springCamp/static/js/main.e281db0f.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e281db0f.js"
+  ]
+}
