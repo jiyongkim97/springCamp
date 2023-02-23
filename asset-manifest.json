@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.js": "/springCamp/static/js/main.e281db0f.js",
+    "main.css": "/springCamp/static/css/main.306f8813.css",
+    "main.js": "/springCamp/static/js/main.5fb73ff0.js",
     "static/media/sideTree.png": "/springCamp/static/media/sideTree.005751c0404fc9dbec00.png",
     "static/media/tree.png": "/springCamp/static/media/tree.7a870cac0301d57a4a1d.png",
     "index.html": "/springCamp/index.html",
-    "main.e281db0f.js.map": "/springCamp/static/js/main.e281db0f.js.map"
+    "main.306f8813.css.map": "/springCamp/static/css/main.306f8813.css.map",
+    "main.5fb73ff0.js.map": "/springCamp/static/js/main.5fb73ff0.js.map"
   },
   "entrypoints": [
-    "static/js/main.e281db0f.js"
+    "static/css/main.306f8813.css",
+    "static/js/main.5fb73ff0.js"
   ]
 }
