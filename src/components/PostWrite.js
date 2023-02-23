@@ -2,76 +2,78 @@ import React, { useEffect, useState } from "react";
 import { dbService } from "../fbase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
-
-
-const PostWrite = ()=>{
-  const [post,setPost] = useState("");
+const PostWrite = (userObj) => {
+  const [post, setPost] = useState("");
   const [posts, setPosts] = useState([]);
-
-
- const getPosts = async () => {
-    const dbPosts = await getDocs(collection(dbService, "posts"));
+  const [write, setWrite] = useState("");
+  const [writes, setWrites] = useState([]);
+  const getPosts = async () => {
+    const dbPosts = await getDocs(collection(dbService, "1TfuPn77POUIqa5HraDPvB1pfz33"));
     dbPosts.forEach((doc) => {
-    const postObject = {
-    ...doc.data(),
-    id: doc.id,
-    };
-    console.log(doc.id, " => ", doc.data());
-    setPosts((prev) => [postObject, ...prev]);
+      const postObject = {
+        ...doc.data(),
+        id: doc.id,
+      };
+      const writeObject = {
+        ...doc.data(),
+        id: doc.id,
+      };
+      setPosts((prev) => [postObject, ...prev]);
+      setWrites((prev) => [writeObject, ...prev])
     });
-    };
-    
-    useEffect(() => {
+  };
+  useEffect(() => {
     getPosts();
-    }, []);
- 
-
-  
- 
-
+  }, []);
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-    const docRef = await addDoc(collection(dbService, "posts"), {
-    post,
-    
-    });
-    console.log("Document written with ID: ", docRef.id);
+      await addDoc(collection(dbService, "1TfuPn77POUIqa5HraDPvB1pfz33"), {
+        post,
+        write,
+      });
     } catch (error) {
-    console.error("Error adding document: ", error);
     }
     setPost("");
-    };
-
-  
-
+    setWrite("");
+  };
 
   const onChange = (event) => {
-    const {target:{value},} = event;
+    const { target: { value }, } = event;
     setPost(value);
   }
+  const onChanged = (event) => {
+    const { target: { value, } } = event;
+    setWrite(value);
 
-  
-  return(
-  <>
-  <div>
-    <form onSubmit={onSubmit}>
-      <input
-      value={post} 
-      onChange={onChange}
-      type="text"/>
-     
-      </form>
+  }
+
+  return (
+    <>
+      <div className="postWrite_main">
+
+        <form onSubmit={onSubmit}>
+          <div className="postWrite">
+            <span>보낼 내용</span>
+            <input
+              className="postWrite_detail"
+              value={post}
+              onChange={onChange}
+              type="text"
+            />
+          </div>
+          <div>
+            <span>from</span>
+            <input
+              className="postFrom"
+              value={write}
+              onChange={onChanged}
+            />
+          </div>
+          <button onChange={onChanged} className="postSend">편지보내기</button>
+        </form>
       </div>
-      
-      <div>
-        {posts.map((post) => (
-        <div key={post.id}>
-          <h4>{post.post}  {post.name}</h4>
-        </div>))}
-      </div>
-      
-  </>
+    </>
   );
 };
 

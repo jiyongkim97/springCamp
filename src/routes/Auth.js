@@ -1,4 +1,3 @@
-
 import { authService } from "../fbase";
 import React, { useState } from "react";
 import {
@@ -8,7 +7,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup
 } from "firebase/auth";
-import Home from "./Home";
 
 const auth = getAuth();
 const Auth = () => {
@@ -45,69 +43,54 @@ const Auth = () => {
       setError("사용법 보기에서 아이디 양식을 확인해주세요:)");
     }
   };
-
-  const toggleAccount = () => setNewAccount((prev) => !prev);
   const loginAccount = () => setNewAccount(false)
   const createAccount = () => setNewAccount(true)
-
   const onSocialClick = async (event) => {
     const {
       target: { name },
     } = event;
     let provider;
-    
     try {
       if (name === "google") {
         provider = new GoogleAuthProvider();
         const result = await signInWithPopup(authService, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
-      } 
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
-
-
   return (
-  <>
-    <Home />
-    <div className="Auth">
-      <form onSubmit={onSubmit} className="container" >
-        <div><input
-          name="email"
-          type="text"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-          className="authInput" />
+    <>
+      <div className="Auth">
+        <form onSubmit={onSubmit} className="container" >
+          <div><input
+            name="email"
+            type="text"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={onChange}
+            className="authInput" />
+          </div>
+          <div><input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={onChange}
+            className="authInput" />
+          </div>
+          <button onClick={loginAccount} >login</button>
+          <button onClick={createAccount} >create</button>
+          {error}
+        </form>
+        <div>
+          <button name="google" onClick={onSocialClick} className="authBtn" >continue with google</button>
         </div>
-        <div><input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-          className="authInput" />
-        </div>
-        {/* <input
-          type="submit"
-          value={newAccount ? "create new account" : "log in"}
-          className="authLoginBtn" /> */}
-         <button onClick={loginAccount} >login</button>
-         <button onClick={createAccount} >create</button>
-        {error}
-
-      </form>
-      {/* <span onClick={toggleAccount} className="authSwitchBtn">
-        {newAccount ? "Sign in" : "Create Account"}
-      </span> */}
-      <div>
-        <button name="google" onClick={onSocialClick} className="authBtn" >continue with google</button>
       </div>
-    </div>
     </>
   )
 

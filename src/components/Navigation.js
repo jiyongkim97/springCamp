@@ -1,10 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Navigation = ()=>{
-  return(
-  <>
-  </>
-  )
-}
+const Navigation = ()=> <nav>
+  <ul>
+  <li>
+    <Link to="/">Home</Link>
+  </li>
+  <li>
+    <Link to="../routes/profile">Profile</Link>
+  </li>
+  </ul>
+  </nav>
+  console.log()
+
 
 export default Navigation;
